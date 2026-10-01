@@ -1,0 +1,20 @@
+.sidebar {
+    position: fixed;  /* Means the position is relative to the browser's viewport*/
+    left: 20px;       /* It's left edge is x Pixels from the left edge of the viewport */
+    height: 100vh; /* vh means viewport height, so the element is as tall as the visible window */
+}
+
+.sidebar-logo {
+    position: absolute;   /* Can share position with other elemements, positionin in it's containg block/*/
+    top: 20px;
+}
+
+.sidebar-nav {
+    position: absolute;
+    top: 50%;                     /* Place the top edge of the sidebar at 50% of the vh*/
+    transform: translateY(-50%);  /* Then we move the element upward by 50% so it's centered */
+
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}

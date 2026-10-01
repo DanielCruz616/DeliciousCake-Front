@@ -1,0 +1,6 @@
+.dashboard-layout{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
