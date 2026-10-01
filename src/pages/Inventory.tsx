@@ -7,6 +7,10 @@ export default function Inventory() {
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
+    const [search, setSearch] =useState("");
+    const filteredProducts = products.filter((product) =>
+        product.name.toLowerCase().includes(search.toLowerCase())
+    );
 
     useEffect(() => {
         fetch("http://localhost:8080/products")
@@ -37,10 +41,28 @@ export default function Inventory() {
     }
 
     return (
-        <div>
-            <h1>Products</h1>
+        <div className="products-page">
 
-            <ProductTable products={products} />
+            <div className="products-header">
+                <div>
+                    <h1>Products</h1>
+                    <p>Manage your delicious products</p>
+                </div>
+
+                <form className="search-form">
+                    <input 
+                        type="text" 
+                        placeholder="Search for products..." 
+                        className="search-input" 
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                    />
+                    <button type="submit" className="search-button">Search</button>
+                </form>
+            </div>
+            
+            <ProductTable products={filteredProducts} />
+
         </div>
     );
 }

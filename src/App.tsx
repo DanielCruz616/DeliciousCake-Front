@@ -1,13 +1,33 @@
-import Inventory from './pages/Inventory'
-import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import DashboardLayout from "./layouts/DashboardLayout";
+
+import Products from "./pages/Inventory";
+import Home from "./pages/Home";
+
 
 function App() {
- 
-  return (
-    <>
-    <Inventory />
-    </>
-  )
+    return (
+        <BrowserRouter>
+            <Routes>
+
+                <Route element={<DashboardLayout />}>
+
+                    <Route 
+                        path="/" 
+                        element={<Home />} 
+                    />
+
+                    <Route
+                        path="/products"
+                        element={<Products />}
+                    />
+
+                </Route>
+
+            </Routes>
+        </BrowserRouter>
+    );
 }
 
-export default App
+export default App;
