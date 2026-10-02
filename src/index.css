@@ -64,7 +64,15 @@
 
 body {
   margin: 0;
+  cursor: url("../public/cursor/Cursor.png"), auto;
 }
+button,
+.sidebar a,
+input,
+label {
+  cursor: url("../public/cursor/Pointer.png"), auto;
+}
+
 
 h1,
 h2 {

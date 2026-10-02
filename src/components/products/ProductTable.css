@@ -14,7 +14,7 @@
     font-weight: 600;
     color: #9b536a;
     border: 2px solid #d6b3b3;
-    border-radius: 7px;
+    border-radius: 4px;
 }
 
 /* Rows */
@@ -23,6 +23,7 @@
     font-size: 14px;
     color: #5c4148;
     border-bottom: 1px solid #f7e9ed;
+    border-radius: 3px;
 }
 
 .product-table tbody tr {
@@ -37,13 +38,11 @@
     border-bottom: none;
 }
 
-/* Product name */
 .product-name {
     font-weight: 600;
     color: #4f333b !important;
 }
 
-/* Category */
 .category-badge {
     display: inline-block;
     padding: 5px 10px;
@@ -53,21 +52,22 @@
     font-size: 12px;
     font-weight: 600;
 }
-
-/* Actions */
 .actions {
     display: flex;
-    gap: 8px;
+    gap: 10px;
 }
 
 .actions button {
     border: none;
-    padding: 7px 12px;
+    padding: 11px 12px;
     border-radius: 8px;
     font-size: 12px;
     font-weight: 600;
-    cursor: pointer;
     transition: all 0.2s ease;
+}
+
+.actions button:hover {
+   background-color: #f8d7e0;
 }
 
 .edit-button {
@@ -75,16 +75,8 @@
     color: #c85c7a;
 }
 
-.edit-button:hover {
-    background-color: #f8d7e0;
-}
-
 .delete-button {
     background-color: #ffffff;
     color: #c85c7a;
     border: 1px solid #f3dce2 !important;
-}
-
-.delete-button:hover {
-    background-color: #fff0f3;
 }

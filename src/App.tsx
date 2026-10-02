@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import DashboardLayout from "./layouts/DashboardLayout";
 
-import Products from "./pages/Inventory";
+import Products from "./pages/Products";
 import Home from "./pages/Home";
 
 

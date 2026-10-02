@@ -1,6 +1,9 @@
 .dashboard-layout{
     display: flex;
-    flex-direction: row;
     justify-content: center;
+    height: 100vh;
 }
 
+.dashboard-content{
+    min-width: 100vh;
+}
