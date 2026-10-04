@@ -14,7 +14,7 @@ export default function SideBar() {
                 <Link to="/">Dashboard</Link>
                 <Link to ="/products">Products</Link>
                 <Link to="/">Tables</Link>
-                <Link to="/">Reservation</Link>
+                <Link to="/reservations">Reservation</Link>
                 <Link to="/">Details</Link>
             </nav>
         </aside>

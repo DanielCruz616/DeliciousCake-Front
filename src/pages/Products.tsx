@@ -5,6 +5,7 @@ import type { Category } from "../types/Category";
 import "./Products.css";
 import "../components/products/ProductModal.css";
 import ProductModal from "../components/products/ProductModal";
+import CategoryModal from "../components/categories/CategoryModal";
 
 
 
@@ -15,7 +16,8 @@ export default function Products() {
     const [search, setSearch] = useState("");
     const [error, setError] = useState("");
     const [loading, setLoading] = useState(true);
-    const [showModal, setShowModal] = useState(false);
+    const [showProductModal, setShowProductModal] = useState(false);
+    const [showCategoryModal, setShowCategoryModal] = useState(false);
     const filteredProducts = products.filter((product) =>
         product.name.toLowerCase().includes(search.toLowerCase())
     );
@@ -52,9 +54,12 @@ export default function Products() {
 
                 <button onClick={() => {
                     setEditingProduct(undefined);
-                    setShowModal(true);
+                    setShowProductModal(true);
                 }}>
                     + Add Product
+                </button>
+                <button onClick={() => {setShowCategoryModal(true);}}>
+                    + Add Category
                 </button>
             </header>
 
@@ -102,16 +107,20 @@ export default function Products() {
                 {!loading && !error && (
                     <ProductTable products={filteredProducts} categories={categories} onEdit={(product) => {
                         setEditingProduct(product);
-                        setShowModal(true);
+                        setShowProductModal(true);
                     }} />
                 )}
             </div>
 
             <ProductModal
                 categories={categories}
-                open={showModal}
+                open={showProductModal}
                 product={editingProduct}
-                onClose={() => setShowModal(false)}
+                onClose={() => setShowProductModal(false)}
+            />
+            <CategoryModal
+                open={showCategoryModal}
+                onClose={() => setShowCategoryModal(false)}
             />
         </div>
     );

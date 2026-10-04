@@ -1,4 +1,4 @@
-import Sidebar from "../components/layout/SideBar";
+import Sidebar from "../components/sidebars/SideBar";
 import {Outlet} from "react-router-dom";
 import "./DashboardLayout.css";
 

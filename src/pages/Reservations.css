@@ -1,0 +1,319 @@
+/* ================================
+   Reservations Page
+================================ */
+
+.reservations-page {
+    width: 100%;
+    min-height: 100%;
+    padding: 35px;
+    box-sizing: border-box;
+    background: #fff8fb;
+}
+
+
+/* ================================
+   Header
+================================ */
+
+.reservations-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.reservations-header h1 {
+    margin: 0;
+    color: #5b2638;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.reservations-header p {
+    margin: 7px 0 0;
+    color: #9a6f7e;
+    font-size: 15px;
+}
+
+
+/* ================================
+   Main Content
+================================ */
+
+.reservations-content {
+    display: grid;
+    grid-template-columns: minmax(400px, 1fr) minmax(300px, 0.8fr);
+    gap: 28px;
+    align-items: start;
+}
+
+
+/* ================================
+   Calendar Card
+================================ */
+
+.reservation-calendar {
+    width: 100%;
+    padding: 25px;
+    box-sizing: border-box;
+
+    background: #fff;
+    border: 1px solid #f3dce5;
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 25px rgba(119, 58, 79, 0.08),
+        0 2px 6px rgba(119, 58, 79, 0.05);
+}
+
+
+/* ================================
+   React Calendar
+================================ */
+
+.reservation-calendar .react-calendar {
+    width: 100%;
+    border: none;
+    font-family: inherit;
+    background: transparent;
+}
+
+
+/* ================================
+   Calendar Navigation
+================================ */
+
+.reservation-calendar .react-calendar__navigation {
+    display: flex;
+    align-items: center;
+    margin-bottom: 18px;
+    gap: 5px;
+}
+
+.reservation-calendar .react-calendar__navigation button {
+    min-width: 42px;
+    height: 42px;
+
+    background: #fff3f7;
+    color: #6b3045;
+
+    border: none;
+    border-radius: 10px;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.reservation-calendar
+.react-calendar__navigation
+button:hover {
+    background: #f8dce7;
+    transform: translateY(-1px);
+}
+
+.reservation-calendar
+.react-calendar__navigation
+button:disabled {
+    background: transparent;
+    color: #d7bfc8;
+}
+
+
+/* Month / Year */
+
+.reservation-calendar
+.react-calendar__navigation
+button:nth-child(3) {
+    flex: 1;
+    background: transparent;
+    color: #5b2638;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.reservation-calendar
+.react-calendar__navigation
+button:nth-child(3):hover {
+    background: #fff3f7;
+}
+
+
+/* ================================
+   Weekdays
+================================ */
+
+.reservation-calendar
+.react-calendar__month-view__weekdays {
+    margin-bottom: 8px;
+
+    text-align: center;
+
+    color: #a05d73;
+    font-size: 12px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.reservation-calendar
+.react-calendar__month-view__weekdays abbr {
+    text-decoration: none;
+}
+
+
+/* ================================
+   Calendar Days
+================================ */
+
+.reservation-calendar .react-calendar__tile {
+    height: 62px;
+    padding: 10px;
+
+    background: transparent;
+    color: #573541;
+
+    border: none;
+    border-radius: 12px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.reservation-calendar
+.react-calendar__tile:hover {
+    background: #fff0f5;
+    color: #7b3852;
+    transform: translateY(-1px);
+}
+
+
+/* ================================
+   Today
+================================ */
+
+.reservation-calendar
+.react-calendar__tile--now {
+    background: #fce5ed;
+    color: #8a405b;
+    font-weight: 700;
+}
+
+.reservation-calendar
+.react-calendar__tile--now:hover {
+    background: #f8d6e2;
+}
+
+
+/* ================================
+   Selected Date
+================================ */
+
+.reservation-calendar
+.react-calendar__tile--active {
+    background: #9b526b;
+    color: #fff;
+    font-weight: 700;
+
+    box-shadow:
+        0 5px 12px rgba(155, 82, 107, 0.25);
+}
+
+.reservation-calendar
+.react-calendar__tile--active:hover {
+    background: #87445c;
+    color: #fff;
+}
+
+
+/* ================================
+   Neighboring Month Days
+================================ */
+
+.reservation-calendar
+.react-calendar__month-view__days__day--neighboringMonth {
+    color: #d8bfc8;
+}
+
+
+/* ================================
+   Reservation List
+================================ */
+
+.reservations-list {
+    min-height: 250px;
+    padding: 25px;
+
+    box-sizing: border-box;
+
+    background: #fff;
+    border: 1px solid #f3dce5;
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 25px rgba(119, 58, 79, 0.08),
+        0 2px 6px rgba(119, 58, 79, 0.05);
+}
+
+.reservations-list h2 {
+    margin: 0 0 8px;
+
+    color: #5b2638;
+    font-size: 20px;
+}
+
+.reservations-list p {
+    margin: 0;
+    color: #a06f7e;
+    font-size: 14px;
+}
+
+
+/* ================================
+   Responsive
+================================ */
+
+@media (max-width: 900px) {
+    .reservations-content {
+        grid-template-columns: 1fr;
+    }
+
+    .reservation-calendar {
+        max-width: 700px;
+    }
+}
+
+@media (max-width: 600px) {
+    .reservations-page {
+        padding: 20px;
+    }
+
+    .reservations-header {
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .reservations-header h1 {
+        font-size: 25px;
+    }
+
+    .reservation-calendar {
+        padding: 15px;
+        border-radius: 16px;
+    }
+
+    .reservation-calendar .react-calendar__tile {
+        height: 50px;
+        padding: 6px;
+    }
+}
