@@ -5,6 +5,7 @@ import DashboardLayout from "./layouts/DashboardLayout";
 import Products from "./pages/Products";
 import Home from "./pages/Home";
 import Reservations from "./pages/Reservations";
+import Sales from "./pages/Sales";
 
 
 function App() {
@@ -27,6 +28,11 @@ function App() {
                     <Route 
                         path="/reservations"
                         element={<Reservations />}
+                    />
+
+                    <Route 
+                        path="/sales"
+                        element={<Sales />}
                     />
 
                 </Route>

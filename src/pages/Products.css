@@ -24,6 +24,8 @@
 }
 
 .products-toolbar input {
+    border-radius: 5px;
+    border: 1px solid #5735417c;
     width: 350px;
     padding: 10px;
 }
@@ -31,30 +33,19 @@
 .view-buttons {
     display: flex;
     gap: 5px;
-}
-
-button {
-    padding: 10px 16px;
-    border: 0;
-    border-radius: 6px;
-}
-
-.view-buttons {
-    display: flex;
-    gap: 5px;
     font-size: 14px;
-    
 }
 
 .view-buttons :hover {
     transition: 0.3s;
-    background: #6d6d6d;
+    background: #fa8fb1;
 }
 
 .view-buttons label {
     padding: 10px 16px;
+    border: solid 1px #5735417c;
     border-radius: 6px;
-    background: #353434;
+    background: #ffccdc;
 }
 
 .view-buttons input {
@@ -62,21 +53,8 @@ button {
 }
 
 .view-buttons label:has(input:checked) {
-    background: #ddd;
-    color: #272727;
+    border: solid 1px #5735417c;
+    background: #fa8fb1;
+    color: #573541;
 }
 
-.products-content {
-    position: relative;
-    min-height: 300px;
-}
-
-.overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background: rgba(255, 255, 255, 0.8);
-}

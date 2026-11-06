@@ -51,16 +51,17 @@ export default function Products() {
                     <h1>Products</h1>
                     <p>Manage your delicious products</p>
                 </div>
-
-                <button onClick={() => {
+                <div className="products-header-actions">   
+                    <button onClick={() => {
                     setEditingProduct(undefined);
                     setShowProductModal(true);
                 }}>
                     + Add Product
                 </button>
-                <button onClick={() => {setShowCategoryModal(true);}}>
-                    + Add Category
-                </button>
+                    <button onClick={() => { setShowCategoryModal(true); }}>
+                        + Add Category
+                    </button>
+                </div>
             </header>
 
             <div className="products-toolbar">

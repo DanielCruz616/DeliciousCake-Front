@@ -22,8 +22,10 @@
     padding: 18px 20px;
     font-size: 14px;
     color: #5c4148;
-    border-bottom: 1px solid #f7e9ed;
-    border-radius: 3px;
+    border-bottom: 1px solid #fabecf;
+    border-radius: 3px #fabecf;
+    background-color: #ffffffa6;
+    text-align: center;
 }
 
 .product-table tbody tr {
@@ -31,7 +33,7 @@
 }
 
 .product-table tbody tr:hover {
-    background-color: #fff8fa;
+    background-color: #f7477f62;
 }
 
 .product-table tbody tr:last-child td {
@@ -55,19 +57,14 @@
 .actions {
     display: flex;
     gap: 10px;
+    align-items: center;
+    justify-content: center;
 }
 
-.actions button {
-    border: none;
-    padding: 11px 12px;
-    border-radius: 8px;
-    font-size: 12px;
-    font-weight: 600;
-    transition: all 0.2s ease;
-}
+
 
 .actions button:hover {
-   background-color: #f8d7e0;
+   background-color: #ffc7d6;
 }
 
 .edit-button {
@@ -78,5 +75,4 @@
 .delete-button {
     background-color: #ffffff;
     color: #c85c7a;
-    border: 1px solid #f3dce2 !important;
 }

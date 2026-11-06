@@ -5,15 +5,12 @@ export default function SideBar() {
     return (
         <aside className="sidebar">
             <div className="sidebar-logo">  
-                <h2>Delicious</h2>
-                <span>Cake</span>
+                <img src="../../../../public/logo.png" alt="Company Logo" />
             </div>
-            
-
             <nav className="sidebar-nav">
                 <Link to="/">Dashboard</Link>
                 <Link to ="/products">Products</Link>
-                <Link to="/">Tables</Link>
+                <Link to="/sales">Tables</Link>
                 <Link to="/reservations">Reservation</Link>
                 <Link to="/">Details</Link>
             </nav>

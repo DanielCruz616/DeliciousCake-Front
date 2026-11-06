@@ -1,7 +1,19 @@
 import type { Product } from "../types/Product";
 
+const API_URL = "http://localhost:8080/products";
+
+export async function getProducts(): Promise<Product[]> {
+    const response = await fetch(API_URL);
+
+    if (!response.ok) {
+        throw new Error("Failed to get product");
+    }
+
+    return response.json();
+}
+
 export async function createProduct(product: Omit<Product, "id">) {
-    const response = await fetch("http://localhost:8080/products", {
+    const response = await fetch(API_URL, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -17,7 +29,7 @@ export async function createProduct(product: Omit<Product, "id">) {
 }
 
 export async function deleteProduct(id: number) {
-    const response = await fetch(`http://localhost:8080/products/${id}`, {
+    const response = await fetch(`${API_URL}/${id}`, {
         method: "DELETE",
     });
 
@@ -28,7 +40,7 @@ export async function deleteProduct(id: number) {
 
 export async function updateProduct(product: Product) {
     const response = await fetch(
-        `http://localhost:8080/products/${product.id}`,
+        `${API_URL}/${product.id}`,
         {
             method: "PUT",
             headers: {

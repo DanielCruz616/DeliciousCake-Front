@@ -1,20 +1,77 @@
 .sidebar {
-    position: fixed;  /* Means the position is relative to the browser's viewport*/
-    left: 20px;       /* It's left edge is x Pixels from the left edge of the viewport */
-    height: 100vh; /* vh means viewport height, so the element is as tall as the visible window */
+    position: fixed;
+    left: 30px;
+    height: 100vh;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 20px;
+    box-sizing: border-box;
 }
 
 .sidebar-logo {
-    position: absolute;   /* Can share position with other elemements, positionin in it's containg block/*/
-    top: 20px;
+    transform: translatex(-10px);
+    padding-bottom: 20px;
+    border-bottom: 1px solid #4e2c2c;
+}
+
+.sidebar-logo img {
+    width: 100px;
+    height: auto;
 }
 
 .sidebar-nav {
-    position: absolute;
-    top: 50%;                     /* Place the top edge of the sidebar at 50% of the vh*/
-    transform: translateY(-50%);  /* Then we move the element upward by 50% so it's centered */
-
     display: flex;
     flex-direction: column;
     gap: 40px;
+    margin-top: 75%;   
+}
+
+.sidebar-nav a {
+    color: #5b2638;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.sidebar-nav a:hover {
+    transition: 0.3s;
+    color: #ff4081;
+}
+
+@media (max-width: 1200px) {
+    .sidebar {
+        width: 100px;
+    }
+
+    .sidebar-logo img {
+        width: 90px;
+    }
+
+    .sidebar-nav {
+        gap: 25px;
+    }
+
+    .sidebar-nav a {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 900px) {
+    .sidebar {
+        width: 80px;
+        left: 20px;
+   }
+
+    .sidebar-logo img {
+        width: 80px;
+    }
+
+    .sidebar-nav {
+        gap: 20px;
+    }
+
+    .sidebar-nav a {
+        font-size: 14px;
+    }
 }
