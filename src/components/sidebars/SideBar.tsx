@@ -12,7 +12,7 @@ export default function SideBar() {
                 <Link to ="/products">Products</Link>
                 <Link to="/sales">Tables</Link>
                 <Link to="/reservations">Reservation</Link>
-                <Link to="/">Details</Link>
+                <Link to="/details">Details</Link>
             </nav>
         </aside>
         

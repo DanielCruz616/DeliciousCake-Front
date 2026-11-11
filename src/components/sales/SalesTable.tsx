@@ -1,12 +1,11 @@
 import type { Sale } from "../../types/Sales";
-import "../shared/DataTable.css";
+import "./SalesTable.css";
 
 interface Props {
     sales: Sale[];
-    onViewDetails: (sale: Sale) => void;
 }
 
-export default function SalesTable({ sales, onViewDetails }: Props) {
+export default function SalesTable({ sales }: Props) {
     return (
         <table className="data-table">
             <thead>
@@ -17,32 +16,36 @@ export default function SalesTable({ sales, onViewDetails }: Props) {
                     <th>Products</th>
                     <th>Total</th>
                     <th>Status</th>
-                    <th>Details</th>
                 </tr>
             </thead>
 
             <tbody>
                 {sales.map(sale => (
-                    <tr key={sale.id}>
-                        <td className="product-name">#{sale.id}</td>
-                        <td>{sale.tableId}</td>
-                        <td>{new Date(sale.createdAt).toLocaleDateString()}</td>
-                        <td>{sale.details.length}</td>
-                        <td>${sale.total.toFixed(2)}</td>
-                        <td>
-                            <span className="category-badge">
-                                {sale.status}
-                            </span>
-                        </td>
-                        <td>
-                            <button
-                                className="edit-button"
-                                onClick={() => onViewDetails(sale)}
-                            >
-                                View
-                            </button>
-                        </td>
-                    </tr>
+                    <>
+                        <tr key={sale.id}>
+                            <td>#{sale.id}</td>
+                            <td>{sale.tableId}</td>
+                            <td>{new Date(sale.createdAt).toLocaleDateString()}</td>
+                            <td>{sale.details.length}</td>
+                            <td>${sale.total.toFixed(2)}</td>
+                            <td>
+                                <span className="category-badge">
+                                    {sale.status}
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr key={`${sale.id}-details`}>
+                            <td colSpan={6}>
+                                {sale.details.map(detail => (
+                                    <div key={detail.id}>
+                                        {detail.productName} — {detail.quantity} x
+                                        ${detail.unitPrice.toFixed(2)}
+                                    </div>
+                                ))}
+                            </td>
+                        </tr>
+                    </>
                 ))}
             </tbody>
         </table>

@@ -6,6 +6,7 @@ import Products from "./pages/Products";
 import Home from "./pages/Home";
 import Reservations from "./pages/Reservations";
 import Sales from "./pages/Sales";
+import Details from "./pages/Details";
 
 
 function App() {
@@ -33,6 +34,11 @@ function App() {
                     <Route 
                         path="/sales"
                         element={<Sales />}
+                    />
+
+                    <Route  
+                        path="/details"
+                        element={<Details />}
                     />
 
                 </Route>
