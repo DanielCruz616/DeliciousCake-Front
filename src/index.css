@@ -3,13 +3,16 @@ body {
   margin: 0;
   background-color: #ffd7e3;
   cursor: url("../public/cursor/Cursor.png"), auto;
+  font-family: serif;
+  font-weight: 100px;
 }
 button,
 .sidebar a,
 input,
 label {
   cursor: url("../public/cursor/Pointer.png"), auto;
-  font-family: inherit;
+  font-family: monospace;
+  font-weight:bold;
 }
 
 
@@ -50,11 +53,12 @@ p {
 
 button{
   padding: 10px 16px;
-  background: #ffc1d5;
+  background: #fffefe;
   color: #573541;
   border: solid 1px #5735417c;
   border-radius: 6px;
   margin: 10px;
+  box-shadow: 2px 4px 2px 1px rgba(255, 15, 175, 0.308);
 }
 
 button:hover {

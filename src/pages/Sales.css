@@ -1,0 +1,165 @@
+.sales-page {
+    padding: 30px;
+    color: #373737;
+}
+
+/* Header */
+
+.sales-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.sales-subtitle {
+    color: #d77b9a;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+
+.sales-counter {
+    width: 190px;
+    padding: 15px;
+    background: #fff0f4;
+    border-radius: 12px;
+}
+
+.sales-counter span {
+    color: #888;
+    font-size: 12px;
+}
+
+.sales-counter strong {
+    display: block;
+    margin: 5px 0 10px;
+    font-size: 22px;
+}
+
+.occupancy-bar {
+    height: 6px;
+    background: #f5dce5;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.occupancy-bar div {
+    height: 100%;
+    background: #dc86a4;
+    border-radius: inherit;
+    transition: width 0.3s;
+}
+
+/* Main layout */
+
+.sales-content {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+.tables-panel,
+.window-panel {
+    padding: 25px;
+    background: white;
+    border: 1px solid #f3e5ea;
+    border-radius: 16px;
+    box-shadow: 0 3px 12px #00000008;
+}
+
+.section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.section-heading h2 {
+    margin: 0 0 6px;
+    font-size: 19px;
+}
+
+/* Tables */
+
+.tables-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+    padding: 10px 0;
+}
+
+.table-legend {
+    display: flex;
+    gap: 12px;
+    font-size: 11px;
+    color: #777;
+}
+
+.table-legend span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    white-space: nowrap;
+}
+
+.table-legend i {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.available-dot {
+    background: #80b99a;
+}
+
+.occupied-dot {
+    background: #dc86a4;
+}
+
+/* Show Window */
+
+.window-panel {
+    min-height: 300px;
+}
+
+/* Responsive */
+
+@media (max-width: 850px) {
+    .sales-content {
+        grid-template-columns: 1fr;
+    }
+
+    .sales-heading {
+        align-items: flex-start;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 550px) {
+    .sales-page {
+        padding: 15px;
+    }
+
+    .sales-heading {
+        flex-direction: column;
+    }
+
+    .sales-counter {
+        width: auto;
+        align-self: stretch;
+    }
+
+    .tables-panel,
+    .window-panel {
+        padding: 15px;
+    }
+
+    .section-heading {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

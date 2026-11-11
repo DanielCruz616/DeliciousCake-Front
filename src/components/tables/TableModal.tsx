@@ -1,159 +1,195 @@
 import { useEffect, useState } from "react";
 import { getProducts } from "../../services/productService";
+import { createSale, updateSale, paySale, cancelSale } from "../../services/salesService";
+
 import type { Product } from "../../types/Product";
-import "../products/ProductModal.css"
+import type { Sale, SaleDetailRequest } from "../../types/Sales";
+
+import ProductCard from "../products/ProductCard";
+import "./TableModal.css";
 
 interface Props {
     table: number | null;
     open: boolean;
+    sale: Sale | null;
     onClose: () => void;
+    onSaved: () => void;
 }
 
-interface SubsaleProduct {
-    product: Product;
-    quantity: number;
-}
-
-export default function TableModal({ table, open, onClose }: Props) {
-
+export default function TableModal({ table, open, sale, onClose, onSaved }: Props) {
     const [products, setProducts] = useState<Product[]>([]);
+    const [details, setDetails] = useState<SaleDetailRequest[]>([]);
+    const [saleId, setSaleId] = useState<number | null>(sale?.id ?? null);
     const [search, setSearch] = useState("");
-    const [subsale, setSubsale] = useState<SubsaleProduct[]>([]);
-    const [quantities, setQuantities] = useState<Record<number, number>>({});
+    const [confirmation, setConfirmation] = useState("");
+    const [saving, setSaving] = useState(false);
 
     useEffect(() => {
         if (!open) return;
 
-        getProducts()
-            .then(setProducts)
-            .catch(console.error);
-    }, [open]);
+        getProducts().then(setProducts).catch(console.error);
+        setSaleId(sale?.id ?? null);
+        setDetails(sale?.details.map(({ productId, quantity }) => ({ productId, quantity })) ?? []);
+        setSearch("");
+        setConfirmation("");
+    }, [open, sale]);
 
-    if (!open) return null;
+    if (!open || table === null) return null;
 
-    const filteredProducts = products.filter((product) =>
+    const tableId = table;
+    const productMap = new Map(products.map(product => [product.id, product]));
+    const filteredProducts = products.filter(product =>
         product.name.toLowerCase().includes(search.toLowerCase())
     );
 
-    function addProduct(product: Product) {
-        const quantity = quantities[product.id] || 1;
-
-        setSubsale((current) => {
-            const existing = current.find(
-                (item) => item.product.id === product.id
-            );
-
-            if (existing) {
-                return current.map((item) =>
-                    item.product.id === product.id
-                        ? { ...item, quantity: item.quantity + quantity }
-                        : item
-                );
-            }
-
-            return [...current, { product, quantity }];
-        });
-
-        setQuantities((current) => ({
-            ...current,
-            [product.id]: 1
-        }));
-    }
-
-    function removeProduct(productId: number) {
-        setSubsale((current) =>
-            current.filter((item) => item.product.id !== productId)
-        );
-    }
-
-    const total = subsale.reduce(
-        (sum, item) => sum + item.product.price * item.quantity,
-        0
+    const quantities = Object.fromEntries(details.map(({ productId, quantity }) => [productId, quantity]));
+    const total = details.reduce((sum, detail) =>
+        sum + (productMap.get(detail.productId)?.price ?? 0) * detail.quantity, 0
     );
 
+    function updateProduct(productId: number, quantity: number) {
+        setDetails(current => {
+            const existing = current.find(detail => detail.productId === productId);
+
+            if (quantity <= 0) {
+                return current.filter(detail => detail.productId !== productId);
+            }
+
+            return existing
+                ? current.map(detail => detail.productId === productId ? { ...detail, quantity } : detail)
+                : [...current, { productId, quantity }];
+        });
+    }
+
+    async function save(): Promise<number> {
+        const request = { customerId: sale?.customerId ?? null, tableId, details };
+
+        const result = saleId
+            ? await updateSale(saleId, request)
+            : await createSale(request);
+
+        setSaleId(result.id);
+        return result.id;
+    }
+
+    async function execute(action: () => Promise<void>) {
+        try {
+            setSaving(true);
+            await action();
+        } catch (error) {
+            console.error(error);
+            alert("Something went wrong. Please try again.");
+        } finally {
+            setSaving(false);
+        }
+    }
+
     return (
-        <div className="modal-overlay">
-            <div className="modal">
-                <button className="close-button" onClick={onClose}>
-                    X
-                </button>
+        <div className="table-overlay">
+            <div className="table">
+                <div className="table-information">
+                    <div className="table-header">
+                    <h2>Mesa {table}</h2>
+                    <button className="table-close-button" onClick={() => execute(async () => { await save(); onSaved(); onClose() })}>X</button>
+                    </div>
+                    <h3>Productos</h3>
 
-                <h2>Mesa {table}</h2>
+                    <input
+                        placeholder="Buscar producto..."
+                        value={search}
+                        onChange={e => setSearch(e.target.value)}
+                    />
 
-                <h3>Productos</h3>
+                    <div className="filtered-products">
+                        {filteredProducts.map(product => (
+                            <ProductCard
+                                key={product.id}
+                                product={product}
+                                quantity={quantities[product.id] ?? 0}
+                                onQuantityChange={quantity => updateProduct(product.id, quantity)}
+                            />
+                        ))}
+                    </div>
+                </div>
+                <div className="table-confirmation">
 
-                <input
-                    type="text"
-                    placeholder="Buscar producto..."
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                />
+                    <div className="receipt-header">
+                        <div>
+                            <small>Order No.</small>
+                            <strong>#{saleId ?? "New Order"}</strong>
+                        </div>
 
-                {filteredProducts.map((product) => (
-                    <div key={product.id}>
-                        <span>
-                            {product.name} - ${product.price}
-                        </span>
+                        <div>
+                            <small>Table No.</small>
+                            <strong>{table}</strong>
+                        </div>
+                    </div>
 
-                        <input
-                            type="number"
-                            min="1"
-                            value={quantities[product.id] || 1}
-                            onChange={(e) =>
-                                setQuantities((current) => ({
-                                    ...current,
-                                    [product.id]: Math.max(
-                                        1,
-                                        Number(e.target.value)
-                                    )
-                                }))
-                            }
-                        />
+                    <div className="receipt-products">
+                        {details.map(detail => {
+                            const product = productMap.get(detail.productId);
+                            if (!product) return null;
+
+                            return (
+                                <div className="receipt-item" key={detail.productId}>
+                                    <div className="receipt-item-info">
+                                        <strong>{detail.quantity}x</strong>
+                                        <span>{product.name}</span>
+                                    </div>
+
+                                    <strong>
+                                        ${(product.price * detail.quantity).toFixed(2)}
+                                    </strong>
+                                </div>
+                            );
+                        })}
+                    </div>
+
+                        <div className="receipt-total">
+                            <strong>Total</strong>
+                            <strong>${total}</strong>
+                        </div>
+                   
+
+                    <div className="receipt-actions">
+
+                        {saleId && (
+                            <div className="cancel-section">
+                                <input
+                                    placeholder="Type cancel to confirm"
+                                    value={confirmation}
+                                    onChange={e => setConfirmation(e.target.value)}
+                                />
+
+                                <button
+                                    className="cancel-button"
+                                    disabled={saving || confirmation.trim().toLowerCase() !== "cancel"}
+                                    onClick={() => execute(async () => {
+                                        await cancelSale(saleId);
+                                        onSaved();
+                                        onClose();
+                                    })}
+                                >
+                                    Cancel
+                                </button>
+                            </div>
+                        )}
 
                         <button
-                            type="button"
-                            onClick={() => addProduct(product)}
+                            className="pay-button"
+                            disabled={saving || details.length === 0}
+                            onClick={() => execute(async () => {
+                                const id = await save();
+                                await paySale(id);
+                                onSaved();
+                                onClose();
+                            })}
                         >
-                            Agregar
+                            Take Payment
                         </button>
+
                     </div>
-                ))}
 
-                <h3>Productos de la venta</h3>
-
-                {subsale.map((item) => (
-                    <div key={item.product.id}>
-                        <span>
-                            {item.product.name} x {item.quantity}
-                            {" - $"}
-                            {item.product.price * item.quantity}
-                        </span>
-
-                        <button
-                            type="button"
-                            onClick={() => removeProduct(item.product.id)}
-                        >
-                            Eliminar
-                        </button>
-                    </div>
-                ))}
-
-                <h3>Total: ${total}</h3>
-
-                <div className="modal-actions">
-                    <button type="button" onClick={onClose}>
-                        Cancelar
-                    </button>
-
-                    <button
-                        type="button"
-                        disabled={subsale.length === 0}
-                        onClick={() => {
-                            console.log("Table:", table, "Subsale:", subsale);
-                        }}
-                    >
-                        Guardar venta
-                    </button>
                 </div>
             </div>
         </div>

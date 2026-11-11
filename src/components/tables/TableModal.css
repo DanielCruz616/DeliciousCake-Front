@@ -1,0 +1,200 @@
+.table-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+}
+
+.table {
+    display: flex;
+    position: relative;
+    width: 900px;
+    height: 600px;
+    padding: 20px;
+    gap: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    overflow: hidden;
+    background: repeating-linear-gradient(-45deg, #fff 0 5%, #ffeef3 5% 10%);
+}
+
+.table-header,
+.receipt-header,
+.receipt-summary div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.table-close-button {
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+/* Product selector */
+
+.table-information {
+    flex: 1.5;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.table-information input,
+.cancel-section input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font: inherit;
+}
+
+.filtered-products {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+    flex: 1;
+    min-height: 0;
+    align-content: start;
+    overflow-y: auto;
+}
+
+.filtered-products .products {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+
+.filtered-products input {
+    max-width: 50px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Receipt */
+
+.table-confirmation {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px #00000014;
+}
+
+.receipt-header {
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ddd;
+}
+
+.receipt-header div,
+.cancel-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.receipt-header div:last-child {
+    text-align: right;
+}
+
+.receipt-header small {
+    color: #777;
+    font-size: 11px;
+}
+
+.receipt-header strong {
+    font-size: 14px;
+}
+
+.receipt-products {
+    flex: 1;
+    min-height: 0;
+    padding: 10px 0;
+    overflow-y: auto;
+}
+
+.receipt-item,
+.receipt-item-info {
+    display: flex;
+    align-items: center;
+}
+
+.receipt-item {
+    justify-content: space-between;
+    gap: 10px;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+    font-size: 12px;
+}
+
+.receipt-item-info {
+    gap: 6px;
+}
+
+.receipt-item-info strong {
+    color: #e76f51;
+}
+
+.receipt-item > strong {
+    white-space: nowrap;
+}
+
+/* Summary and actions */
+
+.receipt-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 15px 0;
+    font-size: 12px;
+}
+
+.receipt-total {
+    padding: 12px;
+    border-top: 1px solid #ddd;
+    font-size: 15px;
+}
+
+.receipt-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.cancel-section input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.receipt-actions button {
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.cancel-button {
+    background: #e8e8e8;
+    color: #333;
+}
+
+.pay-button {
+    background: #111;
+    color: white;
+}
+
+.receipt-actions button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

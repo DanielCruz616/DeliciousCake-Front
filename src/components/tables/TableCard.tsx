@@ -1,3 +1,5 @@
+import "./TableCard.css";
+
 interface Props{
     number: number;
     occupied: boolean;
@@ -11,15 +13,12 @@ export default function TableCard({number, onClick, occupied}: Props ){
             className={`table-card ${occupied ? "occupied" : "available"}`}
             onClick={() => onClick(number)}
         >
-            <div className="table-shape">
-                <span>{number}</span>
-            </div>
 
             <h3>Mesa {number}</h3>
 
-            <span className="table-status">
+            <p className="table-status">
                 {occupied ? "En uso" : "Disponible"}
-            </span>
+            </p>
 
         </button>
     );

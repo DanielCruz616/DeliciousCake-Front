@@ -1,0 +1,47 @@
+.table-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 130px;
+    border: 2px solid transparent;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.table-card.available {
+    background: #edf8f0;
+    border-color: #b8dfc3;
+    color: #43875a;
+}
+
+.table-card.occupied {
+    background: #fff0f4;
+    border-color: #efbdce;
+    color: #c45d80;
+}
+
+.table-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px #00000012;
+}
+
+.table-number {
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.table-status {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.table-card.available .table-status {
+    color: #43875a;
+}
+
+.table-card.occupied .table-status {
+    color: #c45d80;
+}

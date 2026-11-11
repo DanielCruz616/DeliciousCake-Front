@@ -14,8 +14,7 @@
 
 .dashboard-content {
     background:
-        repeating-linear-gradient(to right,#fff8fb , #fff8fb 5%,#ffc1d523 5%,#ffc1d523 10%)
-        #fff8fb;
+        repeating-linear-gradient(to right,#fff8fb , #fff8fb 5%,#ffdfe9 5%,#ffdfe9 10%);
     border-radius: 20px;
     box-shadow: 0 8px 30px rgba(130, 80, 200, 0.15);
     padding: 20px;

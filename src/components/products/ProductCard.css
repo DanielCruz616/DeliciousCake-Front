@@ -1,0 +1,101 @@
+.product-card {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #eee;
+    width: 200px;
+    height: 150px;
+}
+
+/* Image */
+
+.product-image {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+}
+
+/* Information */
+
+.product-info {
+    padding: 10px;
+    flex: 1;
+}
+
+.product-info h3 {
+    font-size: 15px;
+    margin: 0 0 5px;
+}
+
+.product-info p {
+    font-size: 12px;
+    color: #777;
+    margin: 0;
+}
+
+/* Footer */
+
+.product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px 10px;
+}
+
+.product-footer strong {
+    font-size: 15px;
+}
+
+/* Quantity selector */
+
+.product-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background-color: #d3d1d1;
+    width: fit-content;
+    
+}
+
+.product-actions button {
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    border-radius: 50%;
+    border: none;
+    padding: 0%;
+    text-align: center;
+    margin: 3px;
+    box-shadow: none;
+    font-size: 20px;
+}
+
+.product-actions span {
+    color: #000000ff;
+    vertical-align: middle;
+    font-size: 15px;
+    margin: 5px;
+
+}
+
+/* Add button */
+
+.add-product {
+    border: none;
+    padding: 9px;
+    cursor: pointer;
+    background: #d85a59;
+    color: white;
+}
+
+.product-actions .minus-button{
+    background: #ffff;
+}
+
+.product-actions .plus-button{
+    background: #000000f8;
+    color: #ffff;
+}
