@@ -26,5 +26,7 @@ export interface Sale {
 export interface SaleRequest {
     customerId: number | null;
     tableId: number;
-    details: SaleDetailRequest[];
+    details: SaleDetailRequest[] | null;
 }
+
+export type Period = "ALL" | "TODAY" | "YESTERDAY" | "7D" | "30D" | "DATE";

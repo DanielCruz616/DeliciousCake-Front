@@ -18,10 +18,16 @@ export default function ProductCard({
 
             <img
                 className="product-image"
-                // src={product.imageUrl}
+                src={
+                    product.imageUrl
+                        ? `http://localhost:8080${product.imageUrl}`
+                        : "/placeholder.png"
+                }
                 alt={product.name}
+                onError={(e) => {
+                    e.currentTarget.src = "/placeholder.png";
+                }}
             />
-
             <div className="product-info">
                 <h3>{product.name}</h3>
                 <p>{product.description}</p>
@@ -48,7 +54,7 @@ export default function ProductCard({
 
                         <span>{quantity}</span>
 
-                        <button className="plus-button" 
+                        <button className="plus-button"
                             onClick={() => onQuantityChange(quantity + 1)}
                         >
                             +

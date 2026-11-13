@@ -53,6 +53,237 @@
     font-size: 25px;
 }
 
+.details-summary small {
+    color: #b98a99;
+    font-size: 11px;
+}
+
+/* Period selector */
+.period-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 18px;
+}
+
+.period-toolbar h2 {
+    margin: 0 0 6px;
+    color: #704655;
+    font-size: 19px;
+}
+
+.period-toolbar p {
+    margin: 0;
+    color: #a47b88;
+    font-size: 13px;
+}
+
+.period-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.period-controls select,
+.period-controls input {
+    padding: 10px 14px;
+    border: 1px solid #edcbd5;
+    border-radius: 10px;
+    background: #fffafa;
+    color: #704655;
+    outline: none;
+}
+
+.period-controls select:focus,
+.period-controls input:focus {
+    border-color: #d987a3;
+}
+
+/* Statistics cards */
+.statistics-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.stat-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 22px;
+    border: 1px solid #f2dce2;
+    border-radius: 16px;
+    background: #fffafa;
+}
+
+.stat-card span {
+    color: #a47b88;
+    font-size: 13px;
+}
+
+.stat-card strong {
+    color: #bd6683;
+    font-size: 25px;
+}
+
+.stat-card small {
+    color: #b99aa4;
+    font-size: 11px;
+}
+
+/* Charts */
+.statistics-charts {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 20px;
+    margin-bottom: 22px;
+    align-items: stretch;
+}
+
+.statistics-panel {
+    min-width: 0;
+    padding: 24px;
+    border: 1px solid #f2dce2;
+    border-radius: 18px;
+    background: #fffafa;
+    box-shadow: 0 4px 15px #9c526010;
+}
+
+.statistics-panel-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.statistics-panel-heading h2 {
+    margin: 0;
+    color: #704655;
+    font-size: 17px;
+}
+
+.statistics-panel-heading p {
+    margin: 5px 0 0;
+    color: #b98a99;
+    font-size: 11px;
+}
+
+.statistics-panel-heading > span {
+    color: #b98a99;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+/* Daily chart */
+.daily-chart-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.daily-chart {
+    min-width: 100%;
+    height: 210px;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.daily-chart-column {
+    min-width: 0;
+    height: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 7px;
+}
+
+.daily-chart-column strong {
+    color: #a65c75;
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+.daily-chart-track {
+    height: 130px;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    border-radius: 8px;
+    background: #fff0f4;
+}
+
+.daily-chart-bar {
+    width: 65%;
+    min-height: 0;
+    border-radius: 7px 7px 3px 3px;
+    background: linear-gradient(180deg, #e9a3b9, #c86c8b);
+    transition: height 0.3s ease;
+}
+
+.daily-chart-column > span {
+    color: #8e6372;
+    font-size: 11px;
+}
+
+.daily-chart-column small {
+    color: #b99aa4;
+    font-size: 10px;
+}
+
+/* Top products */
+.top-products {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-top: 10px;
+}
+
+.top-product-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 9px;
+    color: #805464;
+    font-size: 12px;
+}
+
+.top-product-info span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.top-product-info strong {
+    color: #bd6683;
+    white-space: nowrap;
+}
+
+.product-chart-track {
+    height: 10px;
+    border-radius: 10px;
+    background: #fce8ee;
+    overflow: hidden;
+}
+
+.product-chart-bar {
+    height: 100%;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #e9a3b9, #c86c8b);
+    transition: width 0.3s ease;
+}
+
+.empty-statistics {
+    color: #a47b88;
+    text-align: center;
+    padding: 30px 0;
+}
+
 /* Sales panel */
 .details-panel {
     padding: 25px;
@@ -82,15 +313,93 @@
     color: #b65370;
     font-size: 12px;
     font-weight: 600;
+    white-space: nowrap;
 }
 
 .details-content {
     position: relative;
-    overflow-x: auto;
+    min-width: 0;
+}
+
+/* Filters */
+.details-toolbar {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.details-toolbar input,
+.details-toolbar select {
+    padding: 11px 15px;
+    border: 1px solid #edcbd5;
+    border-radius: 10px;
+    background: #fffafa;
+    color: #704655;
+    outline: none;
+}
+
+.details-toolbar input {
+    flex: 1;
+    min-width: 0;
+}
+
+.details-toolbar input:focus,
+.details-toolbar select:focus {
+    border-color: #d987a3;
+}
+
+.empty-sales {
+    padding: 30px;
+    text-align: center;
+    color: #a47b88;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 25px;
+}
+
+.pagination button {
+    min-width: 36px;
+    padding: 9px 12px;
+    border: 1px solid #f0cbd7;
+    border-radius: 8px;
+    background: #fff4f7;
+    color: #a65c75;
+    cursor: pointer;
+}
+
+.pagination button.active {
+    background: #d987a3;
+    color: white;
+    border-color: #d987a3;
+}
+
+.pagination button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
 }
 
 /* Responsive */
+@media (max-width: 1000px) {
+    .statistics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .statistics-charts {
+        grid-template-columns: 1fr;
+    }
+}
+
 @media (max-width: 650px) {
+    .details-page {
+        padding: 15px;
+    }
+
     .details-heading {
         align-items: stretch;
         flex-direction: column;
@@ -100,7 +409,47 @@
         width: auto;
     }
 
+    .period-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .period-controls {
+        flex-wrap: wrap;
+    }
+
     .details-panel {
         padding: 15px;
+    }
+
+    .details-section-heading {
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 550px) {
+    .statistics-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .details-toolbar {
+        flex-direction: column;
+    }
+
+    .pagination {
+        flex-wrap: wrap;
+    }
+
+    .daily-chart {
+        gap: 6px;
+    }
+
+    .daily-chart-column strong {
+        font-size: 9px;
+    }
+
+    .daily-chart-column > span {
+        font-size: 9px;
     }
 }

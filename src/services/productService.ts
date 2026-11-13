@@ -56,3 +56,27 @@ export async function updateProduct(product: Product) {
 
     return response.json();
 }
+
+export async function uploadProductImage(
+    productId: number,
+    image: File
+): Promise<Product> {
+
+    const formData = new FormData();
+
+    formData.append("image", image);
+
+    const response = await fetch(
+        `http://localhost:8080/products/${productId}/image`,
+        {
+            method: "POST",
+            body: formData
+        }
+    );
+
+    if (!response.ok) {
+        throw new Error("Failed to upload product image");
+    }
+
+    return response.json();
+}

@@ -15,9 +15,7 @@ export default function TableConfirmation({ onClose, open, table }: Props) {
             await createSale({
                 customerId: null,
                 tableId: table,
-                createdAt: new Date().toLocaleDateString("en-CA"),
-                status: "OPEN",
-                total: 0
+                details: null
             });
         } catch (e) {
             e instanceof Error
